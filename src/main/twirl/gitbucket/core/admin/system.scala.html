@@ -7,18 +7,18 @@
     @helper.html.information(info)
     <form action="@path/admin/system" method="POST" validate="true">
       <div class="box">
-        <div class="box-header">System Settings</div>
+        <div class="box-header">系统设置</div>
         <div class="box-content">
           <!--====================================================================-->
           <!-- GITBUCKET_HOME -->
           <!--====================================================================-->
-          <label class="strong">GITBUCKET_HOME</label>
+          <label class="strong">MOOCODE_HOME</label>
           @GitBucketHome
           <!--====================================================================-->
           <!-- Base URL -->
           <!--====================================================================-->
           <hr>
-          <label><span class="strong">Base URL</span> (e.g. <code>http://example.com/gitbucket</code>)</label>
+          <label><span class="strong">根URL</span> (e.g. <code>http://example.com/gitbucket</code>)</label>
           <fieldset>
               <div class="controls">
                 <input type="text" name="baseUrl" id="baseUrl" style="width: 400px" value="@settings.baseUrl"/>
@@ -34,7 +34,7 @@
           <!-- Information -->
           <!--====================================================================-->
           <hr>
-          <label><span class="strong">Information</span> (HTML is available)</label>
+          <label><span class="strong">信息</span> (HTML可识别)</label>
           <fieldset>
             <textarea name="information" style="width: 600px; height: 100px;">@settings.information</textarea>
           </fieldset>
@@ -42,49 +42,49 @@
           <!-- Account registration -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">Account registration</label>
+          <label class="strong">账号注册</label>
           <fieldset>
             <label class="radio">
               <input type="radio" name="allowAccountRegistration" value="true"@if(settings.allowAccountRegistration){ checked}>
-              <span class="strong">Allow</span> - Users can create accounts by themselves.
+              <span class="strong">允许</span> - 用户可以自己注册账号
             </label>
             <label class="radio">
               <input type="radio" name="allowAccountRegistration" value="false"@if(!settings.allowAccountRegistration){ checked}>
-              <span class="strong">Deny</span> - Only administrators can create accounts.
+              <span class="strong">禁止</span> - 只有管理员能注册账号。
             </label>
           </fieldset>
           <hr>
-          <label class="strong">Default option to create a new repository</label>
+          <label class="strong">创建项目的默认配置</label>
           <fieldset>
             <label class="radio">
               <input type="radio" name="isCreateRepoOptionPublic" value="true"@if(settings.isCreateRepoOptionPublic){ checked}>
-              <span class="strong">Public</span> - All users and guests can read that repository.
+              <span class="strong">公开</span> - 所有用户和访客能访问项目。
             </label>
             <label class="radio">
               <input type="radio" name="isCreateRepoOptionPublic" value="false"@if(!settings.isCreateRepoOptionPublic){ checked}>
-              <span class="strong">Private</span> - Only collaborators can read that repository.
+              <span class="strong">私有</span> - 只有项目参与者能访问项目。
             </label>
           </fieldset>
           <!--====================================================================-->
           <!-- Anonymous access -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">Anonymous access</label>
+          <label class="strong">匿名访问</label>
           <fieldset>
             <label class="radio">
               <input type="radio" name="allowAnonymousAccess" value="true"@if(settings.allowAnonymousAccess){ checked}>
-              <span class="strong">Allow</span> - Anyone can view public repositories, user/group profiles.
+              <span class="strong">允许</span> - 任何人都可以访问项目。
             </label>
             <label class="radio">
               <input type="radio" name="allowAnonymousAccess" value="false"@if(!settings.allowAnonymousAccess){ checked}>
-              <span class="strong">Deny</span> - Users must authenticate before viewing any information
+              <span class="strong">禁止</span> - 用户必须登录才能查看信息。
             </label>
           </fieldset>
           <!--====================================================================-->
           <!-- Activity -->
           <!--====================================================================-->
           <hr>
-          <label><span class="strong">Limit of activity logs</span> (Unlimited if it's not specified or zero)</label>
+          <label><span class="strong">活动日志条数限制</span> (若未指明或为0则无限制)</label>
           <div class="controls">
             <input type="text" id="activityLogLimit" name="activityLogLimit" class="input-mini" value="@settings.activityLogLimit"/>
             <span id="error-activityLogLimit" class="error"></span>
@@ -93,27 +93,27 @@
           <!-- Services -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">Services</label>
+          <label class="strong">服务</label>
           <fieldset>
             <label class="checkbox">
               <input type="checkbox" name="gravatar"@if(settings.gravatar){ checked}/>
-              Use Gravatar for Profile-Images
+              使用Gravatar作为资料图像。
             </label>
           </fieldset>
           <!--====================================================================-->
           <!-- SSH access -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">SSH access</label>
+          <label class="strong">SSH访问</label>
           <fieldset>
             <label class="checkbox">
               <input type="checkbox" id="ssh" name="ssh"@if(settings.ssh){ checked}/>
-              Enable SSH access to git repository
+              允许SSH访问项目。
             </label>
           </fieldset>
           <div class="form-horizontal ssh">
             <div class="control-group">
-              <label class="control-label" for="sshPort">SSH Port</label>
+              <label class="control-label" for="sshPort">SSH端口</label>
               <div class="controls">
                 <input type="text" id="sshPort" name="sshPort" value="@settings.sshPort"/>
                 <span id="error-sshPort" class="error"></span>
@@ -121,13 +121,13 @@
             </div>
           </div>
           <p class="muted">
-            Base URL is required if SSH access is enabled.
+            如果SSH要开启，根URL是必须的.
           </p>
           <!--====================================================================-->
           <!-- Authentication -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">Authentication</label>
+          <label class="strong">授权</label>
           <fieldset>
             <label class="checkbox">
               <input type="checkbox" id="ldapAuthentication" name="ldapAuthentication"@if(settings.ldap){ checked}/>
@@ -224,11 +224,11 @@
           <!-- Notification email -->
           <!--====================================================================-->
           <hr>
-          <label class="strong">Notification email</label>
+          <label class="strong">通知邮箱</label>
           <fieldset>
             <label class="checkbox">
               <input type="checkbox" id="notification" name="notification"@if(settings.notification){ checked}/>
-              Send notifications
+              发送通知
             </label>
           </fieldset>
           <div class="form-horizontal notification">

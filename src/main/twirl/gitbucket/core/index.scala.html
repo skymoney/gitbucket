@@ -3,7 +3,7 @@
   userRepositories: List[gitbucket.core.service.RepositoryService.RepositoryInfo])(implicit context: gitbucket.core.controller.Context)
 @import context._
 @import gitbucket.core.view.helpers._
-@main("GitBucket"){
+@main("MooCode"){
   @dashboard.html.tab()
   <div class="container">
     <div class="row-fluid">
@@ -28,14 +28,14 @@
             <tr>
               <th class="metal">
                 <div class="pull-right">
-                  <a href="@path/new" class="btn btn-success btn-mini">New repository</a>
+                  <a href="@path/new" class="btn btn-success btn-mini">新的项目</a>
                 </div>
-                Your repositories (@userRepositories.size)
+                目前项目 (@userRepositories.size)
               </th>
             </tr>
             @if(userRepositories.isEmpty){
               <tr>
-                <td>No repositories</td>
+                <td>没有项目</td>
               </tr>
             } else {
               @userRepositories.map { repository =>
@@ -56,12 +56,12 @@
         <table class="table table-bordered">
           <tr>
             <th class="metal">
-              Recent updated repositories
+              最近更新的项目
             </th>
           </tr>
           @if(recentRepositories.isEmpty){
             <tr>
-              <td>No repositories</td>
+              <td>暂时没有项目</td>
             </tr>
           } else {
             @recentRepositories.map { repository =>

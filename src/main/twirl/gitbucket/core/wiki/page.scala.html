@@ -12,14 +12,14 @@
       <li>
         <h1 class="wiki-title">@pageName</h1>
         <div class="small">
-          <span class="muted"><strong>@page.committer</strong> edited this page @helper.html.datetimeago(page.time)</span>
+          <span class="muted"><strong>@page.committer</strong> 于 @helper.html.datetimeago(page.time) 更新了页面。</span>
         </div>
       </li>
       <li class="pull-right">
         @if(hasWritePermission){
           <div>
-            <a class="btn btn-small" href="@url(repository)/wiki/@urlEncode(pageName)/_edit">Edit Page</a>
-            <a class="btn btn-small btn-success" href="@url(repository)/wiki/_new">New Page</a>
+            <a class="btn btn-small" href="@url(repository)/wiki/@urlEncode(pageName)/_edit">编辑页面</a>
+            <a class="btn btn-small btn-success" href="@url(repository)/wiki/_new">新加页面</a>
           </div>
         }
       </li>
@@ -27,7 +27,7 @@
     <div style="width: 200px;" class="pull-right">
       <table class="table table-bordered">
         <tr>
-          <th class="metal">Pages <span class="label">@pages.length</span></th>
+          <th class="metal"><span class="label">@pages.length</span>页</th>
         </tr>
         <tr>
           <td>
@@ -47,7 +47,7 @@
       }
       @if(settings.ssh && loginAccount.isDefined){
         <div class="small">
-          <span class="mute">You can clone <a href="javascript:void(0);" id="repository-url-http">HTTP</a> or <a href="javascript:void(0);" id="repository-url-ssh">SSH</a>.</span>
+          <span class="mute">你可以通过 <a href="javascript:void(0);" id="repository-url-http">HTTP</a> 或 <a href="javascript:void(0);" id="repository-url-ssh">SSH</a>的方式来clone.</span>
         </div>
       }
     </div>

@@ -7,11 +7,11 @@
 <span class="small">
   <a class="button-link@if(condition.state == "open"){ selected}" href="@condition.copy(state = "open").toURL">
     <img src="@assets/common/images/status-open@(if(condition.state == "open"){"-active"}).png"/>
-    @openCount Open
+    @openCount 打开
   </a>&nbsp;&nbsp;
   <a class="button-link@if(condition.state == "closed"){ selected}" href="@condition.copy(state = "closed").toURL">
     <img src="@assets/common/images/status-closed@(if(condition.state == "closed"){"-active"}).png"/>
-    @closedCount Closed
+    @closedCount 关闭
   </a>
 </span>
 <div class="pull-right" id="table-issues-control">
@@ -19,17 +19,17 @@
     <li>
       <a href="@(condition.copy(visibility = (if(condition.visibility == Some("private")) None else Some("private"))).toURL)">
         @helper.html.checkicon(condition.visibility == Some("private"))
-        Private repository only
+        只限私有项目
       </a>
     </li>
     <li>
       <a href="@(condition.copy(visibility = (if(condition.visibility == Some("public")) None else Some("public"))).toURL)">
         @helper.html.checkicon(condition.visibility == Some("public"))
-        Public repository only
+        只限公开项目
       </a>
     </li>
   }
-  @helper.html.dropdown("Organization", flat = true){
+  @helper.html.dropdown("组织", flat = true){
     @groups.map { group =>
       <li>
         <a href="@((if(condition.groups.contains(group)) condition.copy(groups = condition.groups - group) else condition.copy(groups = condition.groups + group)).toURL)">
@@ -42,32 +42,32 @@
   @helper.html.dropdown("Sort", flat = true){
     <li>
       <a href="@condition.copy(sort="created",  direction="desc").toURL">
-        @helper.html.checkicon(condition.sort == "created"  && condition.direction == "desc") Newest
+        @helper.html.checkicon(condition.sort == "created"  && condition.direction == "desc") 最新
       </a>
     </li>
     <li>
       <a href="@condition.copy(sort="created",  direction="asc" ).toURL">
-        @helper.html.checkicon(condition.sort == "created"  && condition.direction == "asc") Oldest
+        @helper.html.checkicon(condition.sort == "created"  && condition.direction == "asc") 最旧
       </a>
     </li>
     <li>
       <a href="@condition.copy(sort="comments", direction="desc").toURL">
-       @helper.html.checkicon(condition.sort == "comments"  && condition.direction == "desc") Most commented
+       @helper.html.checkicon(condition.sort == "comments"  && condition.direction == "desc") 最多评论
       </a>
     </li>
     <li>
       <a href="@condition.copy(sort="comments", direction="asc" ).toURL">
-        @helper.html.checkicon(condition.sort == "comments"  && condition.direction == "asc") Least commented
+        @helper.html.checkicon(condition.sort == "comments"  && condition.direction == "asc") 最少评论
       </a>
     </li>
     <li>
       <a href="@condition.copy(sort="updated",  direction="desc").toURL">
-        @helper.html.checkicon(condition.sort == "updated"  && condition.direction == "desc") Recently updated
+        @helper.html.checkicon(condition.sort == "updated"  && condition.direction == "desc") 最近跟新
       </a>
     </li>
     <li>
       <a href="@condition.copy(sort="updated",  direction="asc" ).toURL">
-        @helper.html.checkicon(condition.sort == "updated"  && condition.direction == "asc") Least recently updated
+        @helper.html.checkicon(condition.sort == "updated"  && condition.direction == "asc") 最近最少更新
       </a>
     </li>
   }

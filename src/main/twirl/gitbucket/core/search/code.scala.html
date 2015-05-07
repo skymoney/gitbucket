@@ -9,9 +9,9 @@
 @html.main("Search Results", Some(repository)){
   @menu("code", files.size, issueCount, query, repository){
     @if(files.isEmpty){
-      <h4>We couldn't find any code matching '@query'</h4>
+      <h4>我们无法找到匹配 '@query' 的结果</h4>
     } else {
-      <h4>We've found @files.size code @plural(files.size, "result")</h4>
+      <h4>我们已经找到 @files.size code @plural(files.size, "result")</h4>
     }
     @files.drop((page - 1) * CodeLimit).take(CodeLimit).map { file =>
       <div>

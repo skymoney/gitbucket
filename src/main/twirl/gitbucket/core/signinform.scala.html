@@ -5,23 +5,23 @@
     <th class="metal">
       @if(systemSettings.allowAccountRegistration){
         <div class="pull-right">
-          <a href="@path/register" class="btn btn-mini">Create new account</a>
+          <a href="@path/register" class="btn btn-mini">创建新的账号</a>
         </div>
       }
-      Sign in
+      登录
     </th>
   </tr>
   <tr>
     <td>
       <form action="@path/signin" method="POST" validate="true">
-        <label for="userName">Username:</label>
+        <label for="userName">邮箱:</label>
         <span id="error-userName" class="error"></span>
         <input type="text" name="userName" id="userName" style="width: 95%"/>
-        <label for="password">Password:</label>
+        <label for="password">密码:</label>
         <span id="error-password" class="error"></span>
         <input type="password" name="password" id="password" style="width: 95%"/>
         <div>
-          <input type="submit" class="btn btn-success" value="Sign in"/>
+          <input type="submit" class="btn btn-success" value="登 录"/>
         </div>
       </form>
     </td>

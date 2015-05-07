@@ -19,14 +19,14 @@
       </div>
       @if(fileName.isDefined){
         <div class="pull-right" style="margin-top: 10px;">
-          <input type="button" class="btn btn-default" value="Cancel"/>
-          <input type="submit" class="btn btn-success btn-inline-comment" formaction="@url(repository)/commit/@commitId/comment/new" value="Comment"/>
+          <input type="button" class="btn btn-default" value="取消"/>
+          <input type="submit" class="btn btn-success btn-inline-comment" formaction="@url(repository)/commit/@commitId/comment/new" value="评论"/>
         </div>
       }
     </div>
     @if(!fileName.isDefined){
       <div class="pull-right">
-        <input type="submit" class="btn btn-success" formaction="@url(repository)/commit/@commitId/comment/new" value="Comment on this commit"/>
+        <input type="submit" class="btn btn-success" formaction="@url(repository)/commit/@commitId/comment/new" value="对这个commit发表评论"/>
       </div>
     }
     @issueId.map { issueId => <input type="hidden" name="issueId" value="@issueId"> }

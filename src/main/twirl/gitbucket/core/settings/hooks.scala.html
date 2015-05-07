@@ -4,14 +4,14 @@
   info: Option[Any])(implicit context: gitbucket.core.controller.Context)
 @import context._
 @import gitbucket.core.view.helpers._
-@html.main("Settings", Some(repository)){
-  @html.menu("settings", repository){
+@html.main("设置", Some(repository)){
+  @html.menu("设置", repository){
     @menu("hooks", repository){
       @helper.html.information(info)
       <h3>WebHook URLs</h3>
       <ul>
         @webHooks.map { webHook =>
-          <li>@webHook.url <a href="@url(repository)/settings/hooks/delete?url=@urlEncode(webHook.url)" class="remove">(remove)</a></li>
+          <li>@webHook.url <a href="@url(repository)/settings/hooks/delete?url=@urlEncode(webHook.url)" class="remove">(移除)</a></li>
         }
       </ul>
       <form method="POST" validate="true">
@@ -19,8 +19,8 @@
           <span class="error" id="error-url"></span>
         </div>
         <input type="text" name="url" id="url" value="@enteredUrl" style="width: 300px; margin-bottom: 0px;"/>
-        <input type="submit" class="btn" formaction="@url(repository)/settings/hooks/add"  value="Add"/>
-        <input type="submit" class="btn" formaction="@url(repository)/settings/hooks/test" value="Test Hook"/>
+        <input type="submit" class="btn" formaction="@url(repository)/settings/hooks/add"  value="添加"/>
+        <input type="submit" class="btn" formaction="@url(repository)/settings/hooks/test" value="测试Hook"/>
       </form>
     }
   }

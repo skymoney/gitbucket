@@ -9,7 +9,7 @@
     <table class="table table-bordered table-hover table-issues branches">
       <thead>
         <tr>
-          <th style="background: #f5f5f5;color: #666;">All branches</th>
+          <th style="background: #f5f5f5;color: #666;">所有分支</th>
         </tr>
       </thead>
       <tbody>
@@ -21,18 +21,18 @@
                   <a href="@url(repository)/pull/@issue.issueId" title="@issue.title">#@issue.issueId</a>
                   @if(issue.closed) {
                     @if(info.isMerged){
-                      <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-info">Merged</a>
+                      <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-info">合并</a>
                     }else{
-                      <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-important">Closed</a>
+                      <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-important">关闭</a>
                     }
                   } else {
-                    <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-success">Open</a>
+                    <a href="@url(repository)/pull/@issue.issueId" title="@issue.title" class="label label-success">打开</a>
                   }
                 }.getOrElse{
                   @if(context.loginAccount.isDefined){
-                    <a href="@url(repository)/compare/@{encodeRefName(repository.repository.defaultBranch)}...@{encodeRefName(branch.name)}?expand=1" class="btn btn-small">New Pull Request</a>
+                    <a href="@url(repository)/compare/@{encodeRefName(repository.repository.defaultBranch)}...@{encodeRefName(branch.name)}?expand=1" class="btn btn-small">新的Pull Request</a>
                   }else{
-                    <a href="@url(repository)/compare/@{encodeRefName(repository.repository.defaultBranch)}...@{encodeRefName(branch.name)}" class="btn btn-small">Compare</a>
+                    <a href="@url(repository)/compare/@{encodeRefName(repository.repository.defaultBranch)}...@{encodeRefName(branch.name)}" class="btn btn-small">对比</a>
                   }
                 }
                 @if(hasWritePermission){

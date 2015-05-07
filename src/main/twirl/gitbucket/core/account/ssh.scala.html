@@ -2,7 +2,7 @@
 @import gitbucket.core.ssh.SshUtil
 @import context._
 @import gitbucket.core.view.helpers._
-@html.main("SSH Keys"){
+@html.main("SSH键"){
 <div class="container">
   <div class="row-fluid">
     <div class="span3">
@@ -10,23 +10,23 @@
     </div>
     <div class="span9">
       <div class="box">
-        <div class="box-header">SSH Keys</div>
+        <div class="box-header">SSH键</div>
         <div class="box-content">
           @if(sshKeys.isEmpty){
-            No keys
+            没有键
           }
           @sshKeys.zipWithIndex.map { case (key, i) =>
             @if(i != 0){
               <hr>
             }
-            <strong>@key.title</strong> (@SshUtil.fingerPrint(key.publicKey).getOrElse("Key is invalid."))
-            <a href="@path/@account.userName/_ssh/delete/@key.sshKeyId" class="btn btn-mini btn-danger pull-right">Delete</a>
+            <strong>@key.title</strong> (@SshUtil.fingerPrint(key.publicKey).getOrElse("键不正确."))
+            <a href="@path/@account.userName/_ssh/delete/@key.sshKeyId" class="btn btn-mini btn-danger pull-right">删除</a>
           }
         </div>
       </div>
       <form method="POST" action="@path/@account.userName/_ssh" validate="true">
         <div class="box">
-          <div class="box-header">Add an SSH Key</div>
+          <div class="box-header">新加一个SSH键</div>
           <div class="box-content">
             <fieldset>
               <label for="title" class="strong">Title</label>
@@ -38,7 +38,7 @@
               <div><span id="error-publicKey" class="error"></span></div>
               <textarea name="publicKey" id="publicKey" style="width: 600px; height: 250px;"></textarea>
             </fieldset>
-            <input type="submit" class="btn btn-success" value="Add"/>
+            <input type="submit" class="btn btn-success" value="新加"/>
           </div>
         </div>
       </form>

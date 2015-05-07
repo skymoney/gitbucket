@@ -1,20 +1,20 @@
 @(repository: gitbucket.core.service.RepositoryService.RepositoryInfo)(implicit context: gitbucket.core.controller.Context)
 @import context._
 @import gitbucket.core.view.helpers._
-@html.main("Danger Zone", Some(repository)){
-  @html.menu("settings", repository){
-    @menu("danger", repository){
+@html.main("高危设置", Some(repository)){
+  @html.menu("设置", repository){
+    @menu("危险操作", repository){
       <div class="box">
-        <div class="box-header">Danger Zone</div>
+        <div class="box-header">高危设置</div>
         <div class="box-content">
           <form id="transfer-form" method="post" action="@url(repository)/settings/transfer" validate="true" autocomplete="off">
             <fieldset>
-              <label class="strong">Transfer Ownership</label>
+              <label class="strong">转移项目拥有关系</label>
               <div>
-                Transfer this repo to another user or to group.
+                把这个项目移到另外成员或组下。
                 <div class="pull-right">
                   @helper.html.account("newOwner", 150)
-                  <input type="submit" class="btn btn-danger" value="Transfer"/>
+                  <input type="submit" class="btn btn-danger" value="转移"/>
                   <div>
                     <span id="error-newOwner" class="error"></span>
                   </div>
@@ -24,10 +24,10 @@
           </form>
           <form id="delete-form" method="post" action="@url(repository)/settings/delete">
             <fieldset class="margin">
-              <label class="strong">Delete repository</label>
+              <label class="strong">删除项目</label>
               <div>
-                Once you delete a repository, there is no going back.
-                <input type="submit" class="btn btn-danger pull-right" value="Delete this repository"/>
+                不可撤销，请注意！
+                <input type="submit" class="btn btn-danger pull-right" value="删除这个项目"/>
               </div>
             </fieldset>
           </form>
@@ -39,7 +39,7 @@
 <script>
 $(function(){
   $('#delete-form').submit(function(){
-    return confirm('Once you delete a repository, there is no going back.\nAre you sure?');
+    return confirm('一旦你删除了项目，不可撤销\n你确定吗?');
   });
 });
 </script>

@@ -5,7 +5,7 @@
   enableTaskList: Boolean,
   hasWritePermission: Boolean,
   style: String = "",
-  placeholder: String = "Leave a comment",
+  placeholder: String = "评论一下",
   elastic: Boolean = false,
   uid: Long = new java.util.Date().getTime())(implicit context: gitbucket.core.controller.Context)
 @import context._
@@ -13,8 +13,8 @@
 @import gitbucket.core.view.helpers._
 <div class="tabbable">
   <ul class="nav nav-tabs" style="height: 37px;">
-    <li class="active"><a href="#tab@uid" data-toggle="tab">Write</a></li>
-    <li><a href="#tab@(uid+1)" data-toggle="tab" id="preview@uid">Preview</a></li>
+    <li class="active"><a href="#tab@uid" data-toggle="tab">发布</a></li>
+    <li><a href="#tab@(uid+1)" data-toggle="tab" id="preview@uid">预览</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab@uid">

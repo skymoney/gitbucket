@@ -1,28 +1,28 @@
 @(repository: gitbucket.core.service.RepositoryService.RepositoryInfo, info: Option[Any])(implicit context: gitbucket.core.controller.Context)
 @import context._
 @import gitbucket.core.view.helpers._
-@html.main("Settings", Some(repository)){
-  @html.menu("settings", repository){
-    @menu("options", repository){
+@html.main("设置", Some(repository)){
+  @html.menu("设置", repository){
+    @menu("选项", repository){
       @helper.html.information(info)
       <form id="form" method="post" action="@url(repository)/settings/options" validate="true">
         <div class="box">
-          <div class="box-header">Settings</div>
+          <div class="box-header">设置</div>
           <div class="box-content">
             <fieldset>
-              <label for="repositoryName" class="strong">Repository Name:</label>
+              <label for="repositoryName" class="strong">项目名:</label>
               <input type="text" name="repositoryName" id="repositoryName" value="@repository.name"/>
               <span id="error-repositoryName" class="error"></span>
             </fieldset>
             <fieldset class="margin">
-              <label for="description" class="strong">Description:</label>
+              <label for="description" class="strong">描述:</label>
               <input type="text" name="description" id="description" style="width: 600px;" value="@repository.repository.description"/>
             </fieldset>
             <fieldset class="margin">
-              <label for="defaultBranch" class="strong">Default Branch:</label>
+              <label for="defaultBranch" class="strong">默认分支:</label>
               <select name="defaultBranch" id="defaultBranch"@if(repository.branchList.isEmpty){ disabled}>
                 @if(repository.branchList.isEmpty){
-                  <option value="none" selected>No Branch</option>
+                  <option value="none" selected>没有分支</option>
                 } else {
                   @repository.branchList.map { branch =>
                     <option@if(branch==repository.repository.defaultBranch){ selected}>@branch</option>
@@ -40,9 +40,9 @@
                   @if(!repository.repository.isPrivate              ){ checked  }
                   @if(repository.repository.parentUserName.isDefined){ disabled }
                 >
-                <span class="strong">Public</span><br>
+                <span class="strong">公开</span><br>
                 <div>
-                  <span>All users and guests can read this repository.</span>
+                  <span>所有用户和访客能访问这个项目.</span>
                 </div>
               </label>
             </fieldset>
@@ -52,9 +52,9 @@
                   @if(repository.repository.isPrivate               ){ checked  }
                   @if(repository.repository.parentUserName.isDefined){ disabled }
                 >
-                <span class="strong">Private</span><br>
+                <span class="strong">私有</span><br>
                 <div>
-                  <span>Only collaborators can read this repository.</span>
+                  <span>只有项目的成员能访问这个项目.</span>
                 </div>
               </label>
             </fieldset>
@@ -62,18 +62,18 @@
         </div>
         @*
         <div class="box">
-          <div class="box-header">Features:</div>
+          <div class="box-header">特征:</div>
           <div class="box-content">
             <dl>
               <dt>
                 <label class="checkbox strong">
-                  <input type="checkbox" name="wiki" id="wiki"/> Wiki
+                  <input type="checkbox" name="wiki" id="wiki"/> 维基
                 </label>
               </dt>
               <dd>
-                Adds lightweight Wiki system to this repository.
-                This is the simplest way to provide documentation or examples.
-                Only collaborators can edit Wiki pages.
+                添加一个轻量的维基到这个项目。
+                这可以为这个项目提供一个简单的文档。
+                只有项目成员能编辑这个维基。
               </dd>
             </dl>
             <hr>
@@ -84,15 +84,15 @@
                 </label>
               </dt>
               <dd>
-                Adds lightweight issue tracking integrated with this repository.
-                All users who have signed in and can access this repository can register an issue.
+                为这个项目添加轻量的ISSUE跟踪。
+                所有登录和访问这个项目的用户能添加一个issue。
               </dd>
             </dl>
           </div>
         </div>
         *@
         <fieldset>
-          <input type="submit" class="btn btn-success" value="Apply changes"/>
+          <input type="submit" class="btn btn-success" value="应用更改"/>
         </fieldset>
       </form>
     }
